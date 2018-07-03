@@ -8,9 +8,9 @@ const MessageList = ()=>{
     ]
     return(
         <div className='MessageList'>
-            {messages.map(msg => 
-                <p>{msg.id}: {msg.body}</p>
-            )}
+            {messages.map(msg => (
+                <Message message={msg} key={msg.id} />
+            ))}
         </div>
     )
 }

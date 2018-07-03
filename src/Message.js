@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 
 
-const Message = ()=>{
-    const messages =[
-       
-    ]
+const Message = (props)=>{
+    
     return(
         <div className='Message'>
-           
+           {props.message.userName}: {props.message.body}
         </div>
     )
 }
