@@ -17,11 +17,11 @@ class MessageForm extends Component {
         this.setState({ body: ev.target.value })
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <form className='MessageForm'
                 onSubmit={this.handleSubmit}
-                >
+            >
                 <input
                     type="text"
                     name="body"

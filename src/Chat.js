@@ -5,20 +5,20 @@ import MessageList from './MessageList'
 import MessageForm from './MessageForm'
 
 
-class Chat extends Component{
-    constructor(){
+class Chat extends Component {
+    constructor() {
         super()
 
-        this.state ={
-            messages:[
+        this.state = {
+            messages: [
                 {
-                    id:1,
-                    user:{
+                    id: 1,
+                    user: {
                         uid: 123,
                         displayName: 'Davey',
                         email: 'davey@fretless.com',
                     },
-                 body:'chatting up a storm, yo!'
+                    body: 'chatting up a storm, yo!'
                 },
                 {
                     id: 2,
@@ -27,13 +27,13 @@ class Chat extends Component{
                         displayName: 'Dana',
                         email: 'dana@fretless.com',
                     },
-                  body: 'This guy is so hip. I love my job.',
+                    body: 'This guy is so hip. I love my job.',
                 }
             ],
         }
-    }    
-    
- 
+    }
+
+
     addMessage = (body) => {
         const user = this.props.user
         const messages = [...this.state.messages]
@@ -46,13 +46,13 @@ class Chat extends Component{
         this.setState({ messages })
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="Chat">
-                
+
                 <ChatHeader />
-                <MessageList messages= {this.state.messages} />
-                <MessageForm addMessage={this.addMessage}  />
+                <MessageList messages={this.state.messages} />
+                <MessageForm addMessage={this.addMessage} />
             </div>
         );
     }
