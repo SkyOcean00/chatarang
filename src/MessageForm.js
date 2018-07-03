@@ -9,7 +9,7 @@ const MessageForm = (props)=>{
             type="text"
             name="body"
             placeholder="Type a message..."
-            autofocus
+            autoFocus
             required
             />
             <input type="submit"
