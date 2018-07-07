@@ -52,7 +52,9 @@ class Sidebar extends Component {
     render() {
         return (
             <aside className="Sidebar" style={styles.sidebar}>
-                <Userinfo user={this.props.user}/>
+                <Userinfo user={this.props.user}
+                          signOut={this.props.signOut}
+                />
 
                 <h1 style={styles.h1}>XTBC 18</h1>
 

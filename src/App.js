@@ -6,14 +6,16 @@ import SignIn from './SignIn'
 class App extends Component {
   constructor() {
     super()
-
+    const user = JSON.parse(localStorage.getItem('user'))
     this.state = {
-      user: {},
+      user: user || {}, //if user exists, go user
+      
     }
   }
 
   signOut = () => {
-    this.setState({ user: [] })
+    this.setState({ user: {} })
+    localStorage.removeItem('user')
   }
 
   signIn = () => {
@@ -22,6 +24,7 @@ class App extends Component {
 
   handleAuth = (user) => {
     this.setState({ user })
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   render() {
