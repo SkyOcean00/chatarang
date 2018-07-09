@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ChatHeader from './ChatHeader'
 import MessageList from './MessageList'
-
+import base from'./base'
 import MessageForm from './MessageForm'
 
 
@@ -10,29 +10,20 @@ class Chat extends Component {
         super()
 
         this.state = {
-            messages: [
-                {
-                    id: 1,
-                    user: {
-                        uid: 123,
-                        displayName: 'Davey',
-                        email: 'davey@fretless.com',
-                    },
-                    body: 'chatting up a storm, yo!'
-                },
-                {
-                    id: 2,
-                    user: {
-                        uid: 456,
-                        displayName: 'Dana',
-                        email: 'dana@fretless.com',
-                    },
-                    body: 'This guy is so hip. I love my job.',
-                }
-            ],
+            messages: [],
         }
     }
 
+    componentDidMount() {
+            base.syncState(
+              'messages/general',
+              {
+                context: this,
+                state: 'messages',
+                asArray: true,
+             }
+            )
+          }
 
     addMessage = (body) => {
         const user = this.props.user
@@ -43,6 +34,12 @@ class Chat extends Component {
             user,
             body,
         })
+        this.setState({
+            id: `${user.uid}-${Date.now()}`,
+            user,
+            body,
+        })
+
         this.setState({ messages })
     }
 
