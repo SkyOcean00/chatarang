@@ -9,7 +9,7 @@ class App extends Component {
     const user = JSON.parse(localStorage.getItem('user'))
     this.state = {
       user: user || {}, //if user exists, go user
-      
+
     }
   }
 
@@ -18,7 +18,7 @@ class App extends Component {
     localStorage.removeItem('user')
   }
 
-  signIn = () => {
+  signedIn = () => {
     return this.state.user.uid
   }
 
@@ -30,15 +30,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        this.signedIn()
-          ?<Main 
-            user={this.state.user}
-            signOut={this.signOut}
-           />
-          :<SignIn handleAuth={this.handleAuth} />
+        {
+          this.signedIn()
+            ? <Main
+              user={this.state.user}
+              signOut={this.signOut}
+            />
+            : <SignIn handleAuth={this.handleAuth} />
+        }
       </div>
-    );
+    )
   }
 }
+
 
 export default App

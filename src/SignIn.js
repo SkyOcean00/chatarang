@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
-
 class SignIn extends Component {
     state={
         email:'',
@@ -16,57 +15,58 @@ class SignIn extends Component {
       })
     }
 
-    handleChange = (ev) => {
+    handleChange = (ev) => { 
         this.setState({email:ev.target.value})
     }
 
     render() {
         return(
-            <div className={`SignIn ${css(styles.signIn)}`}>
-        <header className={css(styles.header)}>
-          <span className={css(styles.title)}>
-            <i className="fas fa-hashtag"></i>
-            Chatarang
-          </span>
-        </header>
-        <main className={css(styles.main)}>
-          <form
-            className={css(styles.form)}
-            onSubmit={this.handleSubmit}
-          >
-            <label
-              htmlFor="email"
-              className={css(styles.label)}
+        <div className={`SignIn ${css(styles.signIn)}`}>
+            <header className={css(styles.header)}>
+            <span className={css(styles.title)}>
+                <i className="fas fa-hashtag"></i>
+                Chatarang
+            </span>
+            </header>
+            <main className={css(styles.main)}>
+            <form
+                className={css(styles.form)}
+                onSubmit={this.handleSubmit}
             >
-              Email
-            </label>
-            <input
-              autoFocus
-              type="email"
-              name="email"
-              className={css(styles.input)}
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-            <button
-              type="submit"
-              className={css(styles.button)}
-            >
-              Sign In
-            </button>
-          </form>
+                <label
+                    htmlFor="email"
+                    className={css(styles.label)}
+                >
+                Email
+                </label>
+                <input
+                    autoFocus
+                    type="email"
+                    name="email"
+                    className={css(styles.input)}
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    />
+                <button
+                    type="submit"
+                    className={css(styles.button)}
+                >
+                Sign In
+                </button>
+            </form>
 
-          <div className="blurb">
-            <h2 className={css(styles.h2)}>
-              You're in good company.
-            </h2>
-            <p>Ones of people are already using Chatarang.</p>
-          </div>
-        </main>
+            <div className="blurb">
+                <h2 className={css(styles.h2)}>
+                    You're in good company.
+                </h2>
+                    <p>Ones of people are already using Chatarang.</p>
+            </div>
+            </main>
       </div>
     )
   }
 }
+
 const styles = StyleSheet.create({
   signIn: {
     display: 'flex',
@@ -120,10 +120,12 @@ const styles = StyleSheet.create({
     marginBottom: '1rem',
     textAlign: 'center',
     padding: '0.5rem',
+
     ':focus': {
       outline: 0,
     },
   },
+  
   h2: {
     fontWeight: 'normal',
   },

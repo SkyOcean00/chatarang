@@ -14,8 +14,6 @@ class Main extends Component {
             </div>
         );
     }
-
-
 }
 
 const styles = {

@@ -4,7 +4,6 @@ import MessageList from './MessageList'
 import base from'./base'
 import MessageForm from './MessageForm'
 
-
 class Chat extends Component {
     constructor() {
         super()
@@ -15,20 +14,23 @@ class Chat extends Component {
     }
 
     componentDidMount() {
-            base.syncState(
-              'messages/general',
-              {
-                context: this,
-                state: 'messages',
-                asArray: true,
-             }
-            )
+        this.messagesRef = base.syncState(
+          'messages/general',
+          {
+            context: this,
+            state: 'messages',
+            asArray: true,
           }
+        )
+      }
+    
+      componentWillUnmount() {
+        base.removeBinding(this.messagesRef)
+      }
 
     addMessage = (body) => {
-        const user = this.props.user
         const messages = [...this.state.messages]
-
+        const user = this.props.user
         messages.push({
             id: `${user.uid}-${Date.now()}`,
             user,
@@ -45,16 +47,21 @@ class Chat extends Component {
 
     render() {
         return (
-            <div className="Chat">
+            <div className="Chat" style={styles}>
 
                 <ChatHeader />
                 <MessageList messages={this.state.messages} />
                 <MessageForm addMessage={this.addMessage} />
             </div>
-        );
+        )
     }
 
 
+}
+const styles = {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
 }
 
 export default Chat

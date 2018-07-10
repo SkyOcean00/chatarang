@@ -1,38 +1,37 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Avatar from './Avatar'
+import SignOutButton from './SignOutButton'
 
-const Userinfo = ({user}) => {
+const UserInfo = ({ user, signOut }) => {
     return (
-        <div className="UserInfo" style={styles.children}>
-            <div className="Avatar"></div>
-            <div className="user">
+        <div
+            className="UserInfo"
+            style={styles.userInfo}
+        >
+            <Avatar user={user} />
+
+            <div className="user" style={styles.user}>
                 {user.displayName}
             </div>
-            <a href="#">
-                <i className="fas fa-sign-out-alt"></i>
-            </a>
+            
+            <SignOutButton signOut={signOut} />
         </div>
     )
 }
 
 const styles = {
-    children: {
+    userInfo: {
         padding: '0 1rem',
+        marginBottom: '1rem',
+        display: 'flex',
+        alignItems: 'center',
     },
 
-    h1: {
-        color: 'white',
-        fontSize: '1.2rem',
-        marginTop: 0,
-        marginLeft: 5,
-        padding: '0 1rem',
+    user: {
+        flex: 1,
+        overflowX: 'hidden',
+        textOverflow: 'ellipsis',
     },
-
-    coco: {
-
-        color: 'white',
-        fontsize: '26px',
-        fontFamily: 'Verdana italic',
-    }
 }
 
-export default Userinfo
+export default UserInfo
